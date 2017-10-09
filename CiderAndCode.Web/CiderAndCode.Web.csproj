@@ -195,7 +195,10 @@
   <ItemGroup>
     <Content Include="app\app.js" />
     <Content Include="app\appconfig.js" />
+    <Content Include="app\controllers\Bushels\ListBushelsController.js" />
+    <Content Include="app\controllers\Ciders\ListCidersController.js" />
     <Content Include="app\controllers\PickApples\pickApplesController.js" />
+    <Content Include="app\views\Bushels\listBushels.html" />
     <Content Include="app\views\PickApples\pickApples.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />

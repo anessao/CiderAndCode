@@ -1,0 +1,13 @@
+﻿<div>
+    <h3>Not Pressed:</h3>
+   <div ng-repeat="bushel in bushels | filter : {Pressed : pressedValue}">
+       <p>{{bushel.NumberOfBushels}} Bushels of {{bushel.TypeOfApple}}s picked by {{bushel.ContributingUser}}</p> <br />
+       <span>Select Bushels from {{bushel.ContributingUser}}</span><input type="number" min="1" max="{{bushel.NumberOfBushels}}" id="bushelInput-{{bushel.Id}}"/>
+       <button class="btn-warning" ng-click="stealBushel(bushel)">Steal</button>
+       <button class="btn-info" ng-click="pressBushel(bushel)">Press These Bushels!</button>
+   </div>
+    <h3>Available Ciders:</h3>
+    <div ng-repeat="bushel in bushels | filter : {Pressed : !pressedValue}">
+        <p>{{bushel.NumberOfBushels}} Bushels of {{bushel.TypeOfApple}}s picked by {{bushel.ContributingUser}}</p>
+    </div>
+</div>

@@ -1,5 +1,3 @@
-using CiderAndCode.Web.DataModels;
-
 namespace CiderAndCode.Web.Migrations
 {
     using System;
@@ -16,26 +14,18 @@ namespace CiderAndCode.Web.Migrations
 
         protected override void Seed(CiderAndCode.Web.DataModels.AppDbContext context)
         {
-            context.Users.AddOrUpdate(
-                u => u.Name,
-                new User
-                {
-                    Name = "Not Anessa",
-                    Type = UserType.Juicer
-                },
-                new User
-                {
-                    Name = "Anessa",
-                    Type = UserType.Freeloader
-                },
-                new User
-                {
-                    Name = "Nathan",
-                    Type = UserType.Coder
-                });
+            //  This method will be called after migrating to the latest version.
 
-            context.AppleFacts.AddOrUpdate(af => af.Fact,
-                new AppleFact {Fact = "Opal apples are awesome", Type = AppleType.Opal});
+            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
+            //  to avoid creating duplicate seed data. E.g.
+            //
+            //    context.People.AddOrUpdate(
+            //      p => p.FullName,
+            //      new Person { FullName = "Andrew Peters" },
+            //      new Person { FullName = "Brice Lambson" },
+            //      new Person { FullName = "Rowan Miller" }
+            //    );
+            //
         }
     }
 }
