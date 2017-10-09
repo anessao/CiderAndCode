@@ -15,13 +15,20 @@ namespace CiderAndCode.Web.Controllers
         {
             var db = new AppDbContext();
 
-            var bushels = db.Bushels;
+            var bushels = db.Bushels.Select(bushel => new AppleResult
+            {
+                ContributingUser = bushel.User.Name,
+                NumberOfBushels = bushel.Quantity,
+                TypeOfApple = bushel.Type.ToString(),
+                Id = bushel.Id,
+                Pressed = bushel.Pressed
+            });
 
             return Request.CreateResponse(HttpStatusCode.OK, bushels);
         }
 
         [HttpDelete, Route("{id}")]
-        public HttpResponseMessage StealApples(int id)
+        public HttpResponseMessage RemoveApples(int id)
         {
             var db = new AppDbContext();
 
@@ -30,6 +37,21 @@ namespace CiderAndCode.Web.Controllers
 
             return Request.CreateResponse(HttpStatusCode.OK);
         }
+        [HttpPut, Route("updatebushel")]
+        public HttpResponseMessage StealAmountOfBushels(Bushel newBushel)
+        {
+            var db = new AppDbContext();
+            //firstordefault then make changes
+            var updatedBushel = db.Bushels.FirstOrDefault<Bushel>(bushel => bushel.Id == newBushel.Id);
+
+            updatedBushel.Quantity = newBushel.Quantity;
+            updatedBushel.Pressed = newBushel.Pressed;
+
+            db.SaveChanges();
+            return Request.CreateResponse(HttpStatusCode.OK);
+
+        }
+
 
         [HttpGet, Route("user/{userId}")]
         public HttpResponseMessage GetBushelsByUser(int userId)

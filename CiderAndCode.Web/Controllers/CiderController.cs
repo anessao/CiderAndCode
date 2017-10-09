@@ -48,7 +48,7 @@ namespace CiderAndCode.Web.Controllers
             {
                 //log.error(ex);
                 Request.CreateErrorResponse(HttpStatusCode.InternalServerError,
-                    "Couldn't make cider today, Machine is down for repairs.");
+                    "Couldn't make cider today, Machine is down for repairs." + ex);
             }
 
             return Request.CreateResponse(HttpStatusCode.Created, newCider);

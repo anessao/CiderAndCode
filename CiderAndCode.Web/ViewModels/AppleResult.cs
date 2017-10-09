@@ -6,5 +6,6 @@
         public string TypeOfApple { get; set; }
         public int NumberOfBushels { get; set; }
         public string ContributingUser { get; set; }
+        public bool Pressed { get; set; }
     }
 }
